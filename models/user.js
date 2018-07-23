@@ -10,7 +10,8 @@ var Bookings = require('./bookings');
 
 var UserSchema = new Schema({
   username: {
-    type: String
+    type: String,
+    lowercase:true
   },
   email: {
     type:String,

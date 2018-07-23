@@ -2,7 +2,9 @@ var express = require('express');
 var morgan = require('morgan');
 var port = process.env.PORT || 3004;
 var bodyParser = require('body-parser');
+var cors = require('cors');
 require('./db/mongoose');
+
 
 var userRoute = require('./routes/user');
 var rentalsRoute = require('./routes/rentals');
@@ -10,8 +12,11 @@ var bookingsRoute = require('./routes/bookings');
 
 var app = express();
 
+
+
 app.use(bodyParser.json());
 app.use(morgan('dev'));
+app.use(cors());
 
 
 

@@ -14,3 +14,7 @@ var BookingsSchema = new Schema({
   user: {type: Schema.Types.ObjectId, ref: 'User' },
   rentals: {type: Schema.Types.ObjectId, ref:'Rentals'}
 });
+
+
+
+module.exports = mongoose.model('Bookings',BookingsSchema);
