@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+
+}
+
+body{
+  padding: 0px;
+  margin: 0px;
+}
+
+a {
+     text-decoration: none;
+     color: inherit;
+   }
+
+
+header {
+  background: #111;
+  color: #fff;
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .logo-section,
+header .logo-section .search-box {
+  display: flex;
+  align-items: center;
+}
+
+header .logo-section .logo a {
+  color: #00d8ff;
+  font-weight: bolder;
+  margin-right: 15px;
+}
+
+.search-here input {
+  padding: 13px 10px;
+  font-size: 14px;
+  border: none;
+  margin-right: 10px;
+  border-radius:  5px;
+}
+
+.search-here input:focus {
+  border-radius: 5px;
+  outline: 1px solid #00d8ff;
+  border: 1px solid #00d8ff;
+}
+
+ .search-here button {
+  padding: 7px 20px;
+  background: transparent;
+  border-radius: 5px;
+  border: 1px solid #00d8ff;
+  color: #00d8ff;
+}
+
+button:disabled,
+button:disabled:hover {
+  opacity: 0.4;
+  background: #888;
+  color: #fff;
+  border: 1px solid #888;
+
+}
+
+
+ .search-here button:hover {
+   cursor: pointer;
+   background: #00d8ff;
+   color: #fff;
+ }
+
+  .search-here button:focus {
+    outline: none;
+    border: none;
+    background: green;
+    color: #fff;
+  }
+
+    .search-here button:active{
+      background: transparent;
+      border: 1px solid #00d8ff;
+      color: #00d8ff
+    }
+
+    .nav-links a{
+      margin-right: 10px;
+      color: #888;
+    }
+
+    .nav-links a:hover {
+     color: #fff;
+    }
+
+    .nav-links  a:focus {
+     color: green;
+    }
+
+  .nav-links a:active {
+     color: green;
+    }
+
+    .container {
+      margin: 20px 0px 20px 35px;
+    }
+
+    .container .row{
+      display: flex;
+      flex-flow: wrap;
+      align-items: center;
+    }
+
+    .col-md-3 {
+      border-radius: 3px;
+      border: 1px solid #999;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      width: 275px;
+    }
+
+    .col-md-3 .img {
+      background-repeat: no-repeat;
+      background-size: cover !important;
+      background-position: center !important;
+      width: 273px;
+      height: 230px;
+    }
+
+    .col-md-3 h3 {
+      margin: 5px 0;
+      padding: 0;
+      word-break: break-all;
+    }
+
+    .col-md-3 .price-info {
+      color: #777;
+      display: flex;
+      flex-flow: wrap;
+      font-size: 14px;
+
+    }
+
+    .col-md-3 .price-info span,
+    .col-md-3 .detail span {
+      margin-right: 7px;
+
+    }
+
+    .col-md-3 .detail {
+      display: flex;
+      flex-flow: wrap;
+      margin: 5px 0;
+      color: red;
+      font-size: 12px;
+      font-weight: bolder;
+      text-transform: uppercase;
+    }

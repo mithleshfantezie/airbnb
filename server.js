@@ -21,8 +21,8 @@ app.use(cors());
 
 
 app.use('/api/v1/user',userRoute);
-app.use('/api/v1/rental',rentalsRoute);
-app.use('/api/v1/booking',bookingsRoute);
+app.use('/api/v1/rentals',rentalsRoute);
+app.use('/api/v1/bookings',bookingsRoute);
 
 
 
