@@ -13,16 +13,27 @@ constructor(props) {
 
 hanleKeyPress(event){
   if(event.key === 'Enter'){
-    this.handleSubmit();
+    if(this.state.searchTerm === '') {
+      return;
+    }else{
+      this.handleSubmit();
+    }
+
   }
 }
 
 handleSubmit() {
 
-  const { history } = this.props;
-  const city = this.state.searchTerm;
+  if(this.state.searchTerm === '') {
+    return;
+  }else{
+    const { history } = this.props;
+    const city = this.state.searchTerm;
 
-  city ? history.push(`/city/${city}/homes`) : history.push('/rentals')
+    city ? history.push(`/city/${city}/homes`) : history.push('/rentals')
+  }
+
+
 
 }
 

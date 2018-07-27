@@ -52,7 +52,6 @@ renderSearchTitle() {
 
 
 render() {
-console.log(this.props.rentals);
   return(
     <div className="container">
     {this.renderSearchTitle()}

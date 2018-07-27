@@ -6,9 +6,9 @@ const RentalsList = ({rentals}) => {
   const renderRentalsList = (rentals) => {
     if(rentals) {
       if(rentals.data.length > 0 ) {
-        return rentals.data.map((item)=>{
+        return rentals.data.map((item,index)=>{
           return(
-            <Link to={`/rental/${item._id}`} key={item._id} className="col-md-3">
+            <Link  key={index} to={`/rental/${item._id}`} className="col-md-3">
             <div className="img" style={{ background: `url(${item.image})`}}>
             </div>
             <div className="detail">

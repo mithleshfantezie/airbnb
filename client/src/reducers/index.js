@@ -1,11 +1,13 @@
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import rentalReducer from './rental-reducer';
-
+import {rentalReducer, selectedRentalReducer} from './rental-reducer';
+import {reducer as formReducer} from 'redux-form';
 
 export const init = () => {
   const reducer = combineReducers({
-    rentals: rentalReducer
+    rentals: rentalReducer,
+    rental : selectedRentalReducer,
+    form: formReducer
 
   });
 

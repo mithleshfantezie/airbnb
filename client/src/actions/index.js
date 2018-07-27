@@ -2,7 +2,10 @@ import axios from 'axios';
 
 import { FETCH_RENTALS_INIT,
          FETCH_RENTALS_SUCCESS,
-         FETCH_RENTALS_FAIL } from './type.js';
+         FETCH_RENTALS_FAIL,
+         FETCH_RENTAL_BY_ID_INIT,
+         FETCH_RENTAL_BY_ID_SUCCESS,
+         FETCH_RENTAL_BY_ID_FAIL} from './type.js';
 
 
 const fetchRentalsInit = () => {
@@ -40,4 +43,36 @@ export const fetchRentals = (city) => {
          .catch(({response}) => dispatch(fetchRentalsError(response.data.errors)));
   }
 
+}
+
+const fetchRentalByIdInit = () => {
+  return{
+    type: FETCH_RENTAL_BY_ID_INIT
+  }
+}
+
+const fetchRentalByIdSuccess = (rental) => {
+  return{
+    type: FETCH_RENTAL_BY_ID_SUCCESS,
+    rental
+  }
+}
+
+const fetchRentalByIdFail = (error) => {
+  return {
+    type: FETCH_RENTAL_BY_ID_FAIL,
+    error
+  }
+}
+export const fetchRentalById = (id) => {
+  const url = `/api/v1/rentals/${id}`;
+
+  return dispatch => {
+    dispatch(fetchRentalByIdInit());
+
+    axios.get(url)
+         .then(res => res.data)
+         .then(rental => dispatch(fetchRentalByIdSuccess(rental)))
+         .catch(({response}) => dispatch(fetchRentalByIdFail(response.data.errors)));
+  }
 }

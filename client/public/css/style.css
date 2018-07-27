@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
-
+/*  outline: 1px solid grey; */
+word-break: break-all;
 }
 
 body{
@@ -73,19 +74,11 @@ button:disabled:hover {
    color: #fff;
  }
 
-  .search-here button:focus {
-    outline: none;
-    border: none;
-    background: green;
-    color: #fff;
-  }
-
-    .search-here button:active{
-      background: transparent;
-      border: 1px solid #00d8ff;
-      color: #00d8ff
-    }
-
+ .search-here button:active {
+   background: green;
+   border: 1px solid green;
+   color: #fff;
+ }
     .nav-links a{
       margin-right: 10px;
       color: #888;
@@ -104,7 +97,7 @@ button:disabled:hover {
     }
 
     .container {
-      margin: 20px 0px 20px 35px;
+      margin: 20px 35px 20px 35px;
     }
 
     .container .row{
@@ -144,7 +137,8 @@ button:disabled:hover {
     }
 
     .col-md-3 .price-info span,
-    .col-md-3 .detail span {
+    .col-md-3 .detail span,
+    .col-md-10 .detail span{
       margin-right: 7px;
 
     }
@@ -152,9 +146,199 @@ button:disabled:hover {
     .col-md-3 .detail {
       display: flex;
       flex-flow: wrap;
-      margin: 5px 0;
+      margin-top:5px;
       color: red;
       font-size: 12px;
       font-weight: bolder;
       text-transform: uppercase;
     }
+
+    .container .row .col-md-10 .detail {
+      color: red;
+      margin: 0px;
+      padding: 0px;
+      text-transform: uppercase;
+      font-weight: bolder;
+    }
+
+
+    .container .row .col-md-6 {
+      margin: 20px 0px 0px 0px;
+      width: 48.3%;
+      height: 375px;
+    }
+
+    .container .row .col-md-6 .img {
+      width: 100%;
+      height: inherit;
+      background-position: center !important;
+      background-size: cover !important;
+      background-repeat: no-repeat;
+    }
+
+    .container .row {
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .container .row .col-md-10,
+    .container .row .col-md-2 {
+      margin: 20px 0px 0px 0px;
+
+    }
+        .container .row .col-md-10 {
+          width: 68%;
+        }
+
+        .container .row .col-md-2 {
+          width: 30%;
+        }
+
+        .container .row .col-md-10 .room-info {
+          display: flex;
+          flex-flow: wrap;
+          align-items: center;
+          margin: 10px 0;
+          justify-content: space-between;
+
+
+        }
+        .container .row .col-md-10 .room-info .title {
+          font-weight: bolder;
+          font-size: 28px;
+          padding-bottom: 5px;
+          word-break: break-all;
+        }
+
+        .container .row .col-md-10 .room-info .city,
+          .container .row .col-md-10 .room-info .rental-owner .username {
+          font-size: 14px;
+          color: #444;
+        }
+
+        .container .row .col-md-10 .room-info .rental-owner  {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+
+        .container .row .col-md-10 .room-info .rental-owner img {
+          border-radius: 50%;
+          height: 50px;
+          width: 50px;
+          margin-bottom: 3px;
+
+        }
+
+        .container .row .col-md-10 .rental-inside-detail {
+          display: flex;
+          align-items: center;
+          color: #666;
+          font-size: 15px;
+        }
+         i {
+          color: #111;
+          font-size: 18px;
+          margin-right: 5px;
+        }
+
+        .container .row .col-md-10 .rental-inside-detail span {
+          margin-right: 10px;
+        }
+
+                .container .row .col-md-10 .description {
+                  word-break: break-all;
+                  font-size: 15px;
+                  color: #666;
+                  padding: 20px 0px;
+                }
+
+                .container .row .col-md-10 .assets .title {
+                  font-size: 25px;
+                  font-weight: bolder;
+                  padding-top: 15px;
+                  border-top: 1px solid #999;
+
+                }
+
+                .container .row .col-md-10 .assets .assets-items {
+                  display: flex;
+                  flex-flow: wrap;
+                  align-items: center;
+                }
+
+  .container .row .col-md-10 .assets .assets-items div {
+    padding: 10px 0;
+    width: 50%;
+    font-size: 15px;
+    color: #666;
+  }
+
+  .container .row .col-md-2 {
+    border-radius: 5px;
+    border: 1px solid #999;
+    padding: 10px 5px;
+  }
+
+    .container .row .col-md-2 .rental-rate {
+      border-bottom: 1px solid #999;
+      margin: 5px 10px;
+      padding-bottom: 15px;
+    }
+
+
+
+  .container .row .col-md-2 .rental-rate span {
+      font-size: 20px;
+      font-weight: bolder;
+      color: #333;
+
+  }
+
+    .container .row .col-md-2 .rental-rate sub {
+      color: #777;
+      margin-left:5px;
+    }
+
+    .container .row .col-md-2 .auth {
+      padding: 5px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container .row .col-md-2 .auth .login button {
+      border-radius: 5px;
+      border: 1px solid red;
+      color: red;
+      background: transparent;
+      padding: 15px 25px;
+      font-weight: 300;
+      font-size: 15px;
+
+    }
+
+        .container .row .col-md-2 .auth .login button:hover {
+          color: #fff;
+          background: red;
+          border: 1px solid red;
+          cursor: pointer;
+        }
+
+        .container .row .col-md-2 .auth .login button:active {
+            background: green;
+            border: 1px solid green;
+        }
+
+        .container .row .col-md-2 .auth .login button:focus {
+          outline: none;
+
+        }
+
+        .container .row .col-md-2 .review {
+          word-break: break-all;
+          padding: 10px 0px 0px 10px;
+          color: #777;
+          font-size: 15px;
+        }
