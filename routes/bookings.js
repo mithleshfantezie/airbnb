@@ -1,5 +1,6 @@
 var router = require('express').Router();
 var moment = require('moment');
+var {ObjectId} = require('mongodb');
 
 var Bookings = require('../models/bookings');
 var User = require('../models/user');
@@ -25,10 +26,9 @@ router.post('/',auth.checkJWT,(req,res,next)=>{
                return next(err);
              }
 
-             console.log(foundRental.user._id,"=>",user._id);
 
              if(String(foundRental.user._id) === String(user._id)){
-               return res.status(422).send({errors:[{title:'Invalid Operation!',detail:'You create Booking on your own Rental'}]})
+               return res.status(422).send({errors:[{title:'Invalid Operation!',detail:'You cannot create Booking on your own Rental'}]})
              }
 
              if(isValidBooking(booking,foundRental)){
@@ -69,6 +69,38 @@ router.get('/manage',auth.checkJWT,(req,res,next)=>{
               return res.send(foundBookings);
           });
 
+});
+
+router.get('/rental/:id',auth.checkJWT,(req,res,next)=>{
+  const user = res.locals.user;
+  const rentalId = req.params.id;
+
+  if(!ObjectId.isValid(rentalId)){
+    return res.status(422).send({errors:{title:'Invalid Id!',detail:'Sorry! You Encountered a Broken Link!'}});
+  }
+
+  Bookings.where({rentals: rentalId})
+    .populate('user','-password -bookings -rentals -_id')
+    .populate('rentals','user')
+    .exec(function(err,booking){
+
+      if(err) {
+        return next(err);
+      }
+
+
+
+      if(booking && booking.length > 0){
+
+        if(String(booking[0].rentals.user) !== String(user._id)) {
+          return res.status(422).send({errors:{title:'Invalid User!', detail:'Not Authorized to see the detail!'}});
+        }
+        res.json(booking);
+      }else{
+        return res.status(422).send({errors:{title:'Empty Booking!', detail:'No Booking has been made in the Rental!'}});
+
+      }
+});
 });
 
 function isValidBooking(proposedBooking,choosenRental) {

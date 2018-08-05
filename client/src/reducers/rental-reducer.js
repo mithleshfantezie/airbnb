@@ -3,7 +3,10 @@ import { FETCH_RENTALS_INIT,
          FETCH_RENTALS_FAIL,
          FETCH_RENTAL_BY_ID_INIT,
          FETCH_RENTAL_BY_ID_SUCCESS,
-         FETCH_RENTAL_BY_ID_FAIL} from '../actions/type.js';
+         FETCH_RENTAL_BY_ID_FAIL,
+         MANAGE_RENTAL_INIT,
+         MANAGE_RENTAL_SUCCESS,
+         MANAGE_RENTAL_FAIL} from '../actions/type.js';
 
 
 const INITIAL_STATE = {
@@ -13,6 +16,10 @@ const INITIAL_STATE = {
   },
   rental: {
     data: []
+  },
+  myRentals: {
+    data: [],
+    errors: []
   }
 }
 
@@ -46,6 +53,23 @@ export const selectedRentalReducer = (state=INITIAL_STATE.rental,action) => {
     case FETCH_RENTAL_BY_ID_FAIL:
     return {...state,data:[],errors:action.error}
 
+
+    default:
+    return state;
+
+  }
+}
+
+export const manageRentalReducer = (state=INITIAL_STATE.myRentals,action) => {
+  switch (action.type) {
+    case MANAGE_RENTAL_INIT:
+      return {...state,data: null, errors: null}
+
+    case MANAGE_RENTAL_SUCCESS:
+      return {...state,data: action.rentals}
+
+    case MANAGE_RENTAL_FAIL:
+      return {...state, errors: action.errors}
 
     default:
     return state;

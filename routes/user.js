@@ -37,7 +37,7 @@ var e = email.toLowerCase();
       return next(err);
     }
     if(foundUser){
-      return res.status(422).send({errors:[{title:'Email Used Already!',detail:'Account with this Already Exits!'}]});
+      return res.status(422).send({errors:[{title:'Email Used Already!',detail:'Account with this Email Already Exits!'}]});
     }
   });
 
@@ -65,17 +65,17 @@ router.post('/login',(req,res,next)=>{
       return next(err);
     }
     if(!foundUser) {
-      return res.status(422).send({errors:[{title:'Invalid Credentials!',detail:'Username or Password didnot matched!'}]});
+      return res.status(422).send({errors:[{title:'Invalid Credentials!',detail:"Username or Password didn't matched!"}]});
     }
       const isMatched = foundUser.comparePassword(password);
     if(!isMatched) {
-          return res.status(422).send({errors:[{title:'Invalid Credentials!',detail:'Username or Password didnot matched!'}]});
+          return res.status(422).send({errors:[{title:'Invalid Credentials!',detail:"Username or Password didn't matched!"}]});
     }else{
       const token = jwt.sign({
         _id: foundUser._id,
         username: foundUser.username
       },keys.secret,{expiresIn: '7d'});
-      res.json({"Success":"Login Successful","token":token});
+      res.json({"token":token});
     }
 
 

@@ -14,12 +14,26 @@ export const getRangeOfDates = (startAt, endAt, dateFormat = 'Y/MM/DD' ) => {
   const mendAt = moment(endAt);
   let mstartAt = moment(startAt);
 
-  while(startAt < endAt) {
-    tempDates.push(moment(startAt).format(dateFormat));
-    mstartAt = mstartAt.add(1,'day');
+  while(mstartAt < mendAt) {
+    tempDates.push(mstartAt.format(dateFormat));
+    mstartAt = mstartAt.add(1,'days');
   }
 
-  tempDates.push(mendAt.format(dateFormat));
+tempDates.push(mendAt.format(dateFormat));
+
 
   return tempDates;
+}
+
+
+export const checkExpired = (startAt) => {
+  const now = moment(Date.now());
+  const start = moment(startAt);
+
+  if(start > now) {
+    return 'Upcoming!!';
+  }else{
+    return 'Expired!'
+  }
+
 }

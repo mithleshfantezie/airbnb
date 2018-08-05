@@ -13,8 +13,8 @@ const RentalsList = ({rentals}) => {
             </div>
             <div className="detail">
             <span>{rentalType(item.shared)}</span>
-            <span>{item.category}</span>
-            <span>{item.city}</span>
+            <span><i className="fa fa-tag" />{item.category}</span>
+            <span><i className="fa fa-tag" />{item.city}</span>
             </div>
 
             <h3>{item.title}</h3>
@@ -27,10 +27,6 @@ const RentalsList = ({rentals}) => {
         });
       }
 
-    }else{
-      return(
-        <div><h1>Loading...</h1></div>
-      )
     }
   }
   return(

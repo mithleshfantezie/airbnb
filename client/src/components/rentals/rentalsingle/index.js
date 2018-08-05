@@ -19,7 +19,6 @@ componentWillMount() {
 }
 
 renderRental(rental) {
-  console.log(rental);
 
   if(rental.errors){
     if(rental.errors.length > 0){
@@ -41,7 +40,7 @@ if(rental.data) {
   <RentalImage image={ `${rental.data.image}`} city={`${rental.data.city}`} street={`${rental.data.street}`} />
 
 
-  <div className="row">
+  <div className="row-single">
     <div className="col-md-10">
     <RentalType shared={`${rental.data.shared}`} category={`${rental.data.category}`}/>
 
@@ -55,14 +54,14 @@ if(rental.data) {
       <RentalAssets/>
       </div>
 
-    <RentalBooking dailyRate={`${rental.data.dailyRate}`} bookings={`${rental.data.bookings.length}`}/>
+    <RentalBooking rental={this.props.rental} isAuth={this.props.isAuth} />
   </div>
   </div>
 )
 }else{
   return(
-    <div className="container">
-      Loading <i className="fa fa-spin fa-spinner"/>
+    <div className="loading">
+    <i className="fa fa-spin fa-spinner"/>
     </div>
   )
 }
@@ -81,7 +80,9 @@ if(rental.data) {
 }
 
 function mapStateToProps(state){
+
   return{
+    isAuth: state.auth.isAuth,
     rental: state.rental
   }
 }

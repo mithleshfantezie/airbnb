@@ -5,7 +5,7 @@ const RentalType = ({shared, category}) => {
 return (
   <div className="detail">
   <span>{rentalType(shared)}</span>
-  <span><i className="fa fa-star-of-life" />{category}</span>
+  <span><i className="fa fa-tag" />{category}</span>
   </div>
 )
 }

@@ -3,9 +3,9 @@ import React from 'react';
 import RentalMap from './rentalgooglemap';
 
 const RentalImage = (props) => {
-  console.log(props);
+
   return(
-    <div className="row">
+    <div className="row-single">
     <div className="col-md-6">
     <div className="img" style={{background:`url(${props.image})`}} />
     </div>

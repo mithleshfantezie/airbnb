@@ -5,7 +5,7 @@ import { MapWithGeocode } from '../../map/GoogleMap';
 class RentalMap extends Component {
 
 render() {
-  console.log(this.props);
+
   const location = this.props.location;
 
   return(
