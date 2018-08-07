@@ -122,7 +122,7 @@ confirmProposedDate() {
   }
   const {startAt,endAt} = this.state.purposedBooking;
   const days = getRangeOfDates(startAt,endAt).length;
-  console.log(getRangeOfDates(startAt,endAt));
+
 
   const {rental} = this.props;
 

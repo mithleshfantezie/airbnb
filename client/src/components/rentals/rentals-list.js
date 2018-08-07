@@ -4,8 +4,9 @@ import {Link} from 'react-router-dom';
 
 const RentalsList = ({rentals}) => {
   const renderRentalsList = (rentals) => {
+
     if(rentals) {
-      if(rentals.data.length > 0 ) {
+      if(rentals.data && rentals.data.length > 0 ) {
         return rentals.data.map((item,index)=>{
           return(
             <Link  key={index} to={`/rental/${item._id}`} className="col-md-3">

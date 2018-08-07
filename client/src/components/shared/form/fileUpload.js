@@ -11,7 +11,7 @@ constructor() {
 
   onChange(event) {
     console.log(event.target.files[0]);
-    this.props.input.onChange('http://mithlesh.xyz/Psized.jpg');
+    this.props.input.onChange('https://cdn5.vectorstock.com/i/1000x1000/51/74/hotel-building-line-outline-cartoon-style-vector-15275174.jpg');
   }
 
   render() {

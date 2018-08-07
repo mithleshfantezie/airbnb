@@ -4,11 +4,13 @@ import {connect} from 'react-redux';
 import * as actions from '../../../actions';
 import { ToastContainer, toast } from 'react-toastify';
  import 'react-toastify/dist/ReactToastify.css';
+ import * as moment from 'moment';
+ import {toUpperCase} from '../../../helper';
+ import {Link} from 'react-router-dom';
 
 
 import DeleteRentalModal from './deleteRentalModal';
 
-import OwnRentalList from './ownRentalList';
 
 class ManageRentals extends  Component {
   constructor(props) {
@@ -53,7 +55,22 @@ class ManageRentals extends  Component {
           <div className="container">
           <div className="row">
 
-          <OwnRentalList rentals={rentals} />
+          {rentals.data.map((item,index)=>{
+                return(
+                  <div key={index} className="col-md-rental">
+                  <div className="title-part">
+                  <div className="title">{toUpperCase(item.title)} - {toUpperCase(item.city)}</div> <div className="close" onClick={()=>this.opendeleteRentalModal(item._id)}> &times; </div>
+                  </div>
+
+                  <div>
+                  <Link to={`/rental/${item._id}`}>Go To Rental</Link> <Link to={`/myrental/${item._id}/bookings`}>Bookings({item.bookings.length})</Link>
+                  </div>
+                  <div className="timestamp">
+                    Created: {moment(item.createdAt).format('MMM Do Y')}
+                  </div>
+                  </div>
+                )
+              })}
 
           </div>
           </div>

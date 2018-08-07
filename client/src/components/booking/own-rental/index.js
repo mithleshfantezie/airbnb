@@ -68,7 +68,7 @@ renderBookings(bookings) {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
+
   return {
     bookings: {
       data: state.UserBookings.data,
