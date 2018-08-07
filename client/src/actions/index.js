@@ -52,7 +52,7 @@ const fetchRentalsError = (errors) => {
 
 
 export const fetchRentals = (city) => {
-  const url = city  ? `/api/v1/rentals?city=${city}` : 'http://localhost:3004/api/v1/rentals';
+  const url = city  ? `/api/v1/rentals?city=${city}` : '/api/v1/rentals';
 
   return dispatch => {
     dispatch(fetchRentalsInit());
@@ -60,8 +60,8 @@ export const fetchRentals = (city) => {
     axios.get(url)
          .then(res => res.data )
          .then(rentals => dispatch(fetchRentalsSuccess(rentals)))
-         .catch((response) => {
-           console.log(response);
+         .catch((data) => {
+           dispatch(fetchRentalsError(data.response.data.errors));
 
          });
   }
