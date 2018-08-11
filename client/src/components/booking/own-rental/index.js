@@ -8,7 +8,7 @@ import * as actions from '../../../actions';
 class UsersBooking extends Component {
 
 componentWillMount() {
-  const rentalId = this.props.match.params.id;
+  const rentalId = this.props.params.params.id;
   this.props.dispatch(actions.bookingsOnOwnRental(rentalId));
 }
 
@@ -42,6 +42,7 @@ renderBookings(bookings) {
 
 }
   render() {
+    console.log(this.props);
     if(this.props.bookings.errors) {
 
         return(

@@ -4,10 +4,12 @@ import authService from '../../../services/auth-service';
 
 
 const ProtectedRoutes = (props) => {
-  const {component : Component, rest } = props;
+
+  const {component : Component, rest, computedMatch} = props;
+
   return(
-    <Route {...rest} render={(props)=> authService.isAuthinticated()
-                              ? <Component {...props} {...rest} />
+    <Route params={computedMatch.params} {...rest} render={(props)=> authService.isAuthinticated()
+                              ? <Component params={computedMatch} {...props} {...rest} />
                               : <Redirect to={{pathname: '/login'}} />} />
   )
 }
