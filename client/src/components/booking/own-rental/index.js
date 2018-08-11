@@ -21,7 +21,7 @@ renderBookings(bookings) {
       return bookings.data.map((item,index)=>{
         return(
         <div key={index} className="col-md-new">
-        <div className="rental-type">{checkExpired(item.startAt)}</div>
+        <div className="rental-type">{checkExpired(item.startAt,item.endAt)}</div>
         <div className="title">Booker: {toUpperCase(item.user.username)}</div>
         <div className="description">Email: {toUpperCase(item.user.email)}</div>
           <div className="time-interval">{moment(item.startAt).format('L')} to {moment(item.endAt).format('L')} | {item.days} days </div>

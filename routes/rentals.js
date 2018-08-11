@@ -4,6 +4,7 @@ var Rentals = require('../models/rentals');
 var User = require('../models/user');
 var Bookings = require('../models/bookings');
 var auth = require('../middleware/auth');
+var moment = require('moment');
 
 
 router.get('/manage',auth.checkJWT,(req,res,next)=>{
@@ -40,6 +41,33 @@ router.get('/:id',(req,res,next)=>{
 });
 
 
+// router.get('/booked/:id',(req,res,next)=>{
+//   const id = req.params.id;
+//   var date = moment().subtract(2,'days').format();
+//
+//   console.log(date);
+//
+//
+//   Rentals.findById(id)
+//          .populate({
+//            path: 'bookings',
+//            select: 'endAt',
+//            match: {endAt: {$gte : new Date()}}
+//          })
+//          .exec(function(err,foundRental) {
+//            if(err) {
+//              return next(err);
+//            }
+//
+//            if(foundRental) {
+//              return res.json(foundRental);
+//            }
+//
+//          });
+//
+// });
+
+
 router.delete('/:id',auth.checkJWT,(req,res,next)=>{
   const id = req.params.id;
   const user = res.locals.user;
@@ -52,8 +80,8 @@ Rentals.findById(id)
        .populate('user','_id')
        .populate({
          path: 'bookings',
-         select: 'startAt',
-         match: {startAt: {$gt: new Date()}}
+         select: 'endAt',
+         match: {endAt: {$gte : new Date()}}
        })
        .exec(function(err,rental){
   if(err) {

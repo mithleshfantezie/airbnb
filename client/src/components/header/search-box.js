@@ -11,28 +11,20 @@ constructor(props) {
       }
 }
 
-hanleKeyPress(event){
-  if(event.key === 'Enter'){
-    if(this.state.searchTerm === '') {
-      return;
-    }else{
-      this.handleSubmit();
-    }
 
-  }
-}
 
-handleSubmit() {
+searchCity(e) {
+      const { history } = this.props;
 
-  if(this.state.searchTerm === '') {
-    return;
+  this.setState({searchTerm: e.target.value});
+  if(e.target.value === '') {
+    return  history.push('/rentals');
   }else{
-    const { history } = this.props;
-    const city = this.state.searchTerm;
+
+    const city = e.target.value;
 
     city ? history.push(`/city/${city}/homes`) : history.push('/rentals')
   }
-
 
 
 }
@@ -41,13 +33,12 @@ handleSubmit() {
   render() {
     return(
       <div className="search-here">
-      <input type="search" value={this.state.searchTerm} onChange={(e) => this.setState({searchTerm: e.target.value})} onKeyPress = {(event) => {this.hanleKeyPress(event)}}  placeholder="Try 'New York'" />
-      <button onClick={()=> this.handleSubmit()} >Search</button>
+      <input type="search" value={this.state.searchTerm} onChange={(e) => this.searchCity(e)}  placeholder="Try 'New York'" />
       </div>
     )
   }
 }
 
-
+//onKeyPress = {(event) => {this.hanleKeyPress(event)}} 
 
 export default withRouter(Search);

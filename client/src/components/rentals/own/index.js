@@ -66,7 +66,7 @@ class ManageRentals extends  Component {
                   <Link to={`/rental/${item._id}`}>Go To Rental</Link> <Link to={`/myrental/${item._id}/bookings`}>Bookings({item.bookings.length})</Link>
                   </div>
                   <div className="timestamp">
-                    Created: {moment(item.createdAt).format('MMM Do Y')}
+                    Created: {moment(item.createAt).format('MMM Do Y')}
                   </div>
                   </div>
                 )

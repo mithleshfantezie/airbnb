@@ -28,6 +28,7 @@ import { FETCH_RENTALS_INIT,
 
 const axiosInstance = axiosService.getInstance();
 
+
 const fetchRentalsInit = () => {
   return {
     type: FETCH_RENTALS_INIT

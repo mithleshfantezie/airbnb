@@ -15,6 +15,9 @@ import ManageRentals from './components/rentals/own';
 import CreateRental from './components/rentals/create';
 import UsersBooking from './components/booking/own-rental';
 
+
+import LoginRoute from './components/shared/auth/loginRoute';
+import ProtectedRoutes from './components/shared/auth/protectedRoutes';
 import * as actions from './actions';
 
 class App extends Component {
@@ -39,11 +42,11 @@ class App extends Component {
       <Route exact path="/city/:city/homes" component={SearchRentals} />
       <Route exact path="/rental/:id" component={RentalSingle} />
       <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={Signup} />
-      <Route exact path="/manage/bookings" component={ManageBookings} />
-      <Route exact path="/manage/rentals" component={ManageRentals} />
-      <Route exact path="/create/rental" component={CreateRental}/>
-      <Route exact path="/myrental/:id/bookings" component={UsersBooking} />
+      <LoginRoute exact path="/signup" component={Signup} />
+      <ProtectedRoutes exact path="/manage/bookings" component={ManageBookings} />
+      <ProtectedRoutes exact path="/manage/rentals" component={ManageRentals} />
+      <ProtectedRoutes exact path="/create/rental" component={CreateRental}/>
+      <ProtectedRoutes exact path="/myrental/:id/bookings" component={UsersBooking} />
       </Switch>
       </div>
       </BrowserRouter>

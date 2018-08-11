@@ -26,14 +26,25 @@ tempDates.push(mendAt.format(dateFormat));
 }
 
 
-export const checkExpired = (startAt) => {
+export const checkExpired = (startAt,endAt) => {
   const now = moment(Date.now());
   const start = moment(startAt);
+  const end = moment(endAt);
 
-  if(start > now) {
-    return 'Upcoming!!';
+
+
+  if(start > now && end > now ) {
+    let remaining = start.endOf('day').fromNow();
+
+    return `Upcoming | `+ titleize(remaining)+ '!';
+  }else if (start < now && end > now) {
+    let remaining = end.endOf('day').fromNow();
+    return `Currently | Expires `+ remaining + '!';
+
   }else{
-    return 'Expired!'
+    let remaining = start.endOf('day').fromNow();
+    return `Expired | `+ titleize(remaining)+ '!';
+
   }
 
 }

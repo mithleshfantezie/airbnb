@@ -52,6 +52,7 @@ renderSearchTitle() {
 
 
 render() {
+
   return(
     <div className="container">
     {this.renderSearchTitle()}
